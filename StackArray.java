@@ -11,7 +11,7 @@ package arraystack;
 
 public class ArrayStack {
 
-    private int capacity;
+    private final int capacity;
   private int top = 0;
   private final String[] storage;
   
@@ -38,7 +38,7 @@ public class ArrayStack {
   }
 
   private boolean isFull() {
-    if (top == capacity) {
+    if (top == capacity-1) {
       System.out.print ("FULL!");
       return true;
     } 
@@ -63,7 +63,7 @@ public class ArrayStack {
       System.out.println();
     } else {
       System.out.println("... trying to pop stack[" + (top-1) + "] ...");
-      storage[top] =  ;
+      storage[top] = storage[capacity] ;
       top--;
       System.out.println(storage[top] + " was successfully removed.");
       System.out.println();
