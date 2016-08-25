@@ -2,7 +2,7 @@
 * SOURCE CODE: ArrayStack.java
 * AUTHOR NAME: Christian Diverson
 * GITHUB URL: [github.com/christiandiverson]
-* LAST UPDATE: [8/24/2016]
+* LAST UPDATE: [8/25/2016]
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -11,37 +11,26 @@ package arraystack;
 
 public class ArrayStack {
 
-  private int capacity;
+    private int capacity;
   private int top = 0;
-  private String[] storage;
+  private final String[] storage;
   
   // constructor = initialize an object instance of the class
   public ArrayStack(int size) {
-    // assign the value of size to capacity
     capacity = size;
     storage = new String[capacity];
   }
 
   public void show() {
-    // the top of the stack starts from array[0] then newer item gets added on top of another until it reaches its capacity limit
     for (int i = capacity-1; i >= 0; i--) {
-        System.out.println ("Stack["+i+"] = "+storage[i]+"th value");
-      /* print like this: 
-      stack[9]   = 10th value
-      stack[8]   = 9th value
-      stack[7]   = 8rd value
-      ....  
-      stack[1]   = 2nd value
-      stack[0]   = 1st value
-      */
+        System.out.println ("Stack["+i+"] = "+storage[i]);
     }
     System.out.println();
   }
   
   private boolean isEmpty() {
     if (storage[top] == null) {
-      // print error message
-      System.out.print ("ERROR!");
+      System.out.print ("EMPTY!");
       System.out.println();
       return true;
     } 
@@ -50,8 +39,7 @@ public class ArrayStack {
 
   private boolean isFull() {
     if (top == capacity) {
-      // print error message
-      System.out.print ("ERROR!");
+      System.out.print ("FULL!");
       return true;
     } 
     return false;
@@ -59,13 +47,11 @@ public class ArrayStack {
 
   public void push(String value) {
     if (isFull()) {
-      // print error message
-      System.out.print ("ERROR!");
+      System.out.print ("Push Failed!");
       System.out.println();
     } else {
       System.out.println("... trying to push on stack[" + top + "] ...");
       storage[top] = value;
-      /* increment or decrement top*/;
       top++;
       System.out.println(value + " was successfully added.");
       System.out.println();
@@ -73,13 +59,11 @@ public class ArrayStack {
   }
   public void pop() {
     if (isEmpty()) {
-      // print error message
-      System.out.print ("ERROR!");
+      System.out.print ("Pop Failed!");
       System.out.println();
     } else {
       System.out.println("... trying to pop stack[" + (top-1) + "] ...");
-      storage[top] = storage[top-1] ;
-      /* increment or decrement top*/;
+      storage[top] =  ;
       top--;
       System.out.println(storage[top] + " was successfully removed.");
       System.out.println();
@@ -98,35 +82,53 @@ public class ArrayStack {
   
   public static void main(String[] args) {
     // construct a new array queue and assign 10 as the integer value for the size limit of the stack
-    System.out.println("STORAGE CAPACITY = " + /* return the size limit */);
+    ArrayStack storage = new ArrayStack(10);
+    System.out.println("STORAGE CAPACITY = " + storage.capacity);
     System.out.println();
     // show empty stack
+    storage.show();
     // try removing on an empty stack
+    storage.pop();
     // peek top element of an empty stack
-    storage.push("one");
+    storage.peek();
+    storage.push("1");
     // show the updated stack
+    storage.show();
     // peek if top element is "one"
-    storage.push("two");
+    storage.peek();
+    storage.push("2");
     // show the updated stack
+    storage.show();
     // peek if top element is "two"
-    storage.push("three");
+    storage.peek();
+    storage.push("3");
     // show the updated stack
+    storage.show();
     // peek if top element is "three"
-    storage.push("four");
+    storage.peek();
+    storage.push("4");
     // show the updated stack
-    storage.push("five"); 
+    storage.show();
+    storage.push("5"); 
     // show the updated stack
+    storage.show();
     // try removing "five"
-    storage.push("six"); 
-    storage.push("seven"); 
-    storage.push("eight"); 
-    storage.push("nine");    
-    storage.push("ten"); 
+    storage.pop();
+    storage.push("6"); 
+    storage.push("7"); 
+    storage.push("8"); 
+    storage.push("9");    
+    storage.push("10"); 
     // show the updated stack
+    storage.show();
     // peek if top element is "ten"
+    storage.peek();
     // try adding "eleven"
+    storage.push("11");
     // try adding "twelve"
+    storage.push("12");
     // show the updated stack
+    storage.show();
   }  
 
 }
